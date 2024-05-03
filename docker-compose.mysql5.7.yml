@@ -1,0 +1,31 @@
+services:
+  db:
+    image: mysql:5.7
+    container_name: db
+    environment:
+      MYSQL_DATABASE: gestion_produits
+      MYSQL_ROOT_PASSWORD: root
+    volumes:
+      - ./database/gestion_produits.sql:/docker-entrypoint-initdb.d/gestion_produits.sql
+    networks:
+      - default
+
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: web
+    ports:
+      - "8080:80"
+    volumes:
+      - ./www/:/var/www/html/
+    depends_on:
+      - db
+    networks:
+      - default
+    env_file:
+      - .env.production
+
+networks:
+  default:
+    name: my_network
