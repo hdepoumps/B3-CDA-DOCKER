@@ -5,7 +5,7 @@ ENV MYSQL_DATABASE=gestion_produits
 COPY ./database/gestion_produits.sql /docker-entrypoint-initdb.d/
 
 # Étape 2 : Construire l'image PHP
-FROM php:7.4-apache
+FROM php:5.6-apache
 COPY ./www/ /var/www/html/
 RUN docker-php-ext-install mysqli pdo pdo_mysql
 RUN chmod -R 777 /var/www/html/uploads
