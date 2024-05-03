@@ -1,24 +1,24 @@
 <?php
     session_start();
-    include 'connect.php';
+    include 'connect.php'; // Assurez-vous que ce fichier configure correctement la connexion à votre base de données PostgreSQL
     include 'fonctions.php';
     secu();
 
     if (!isset($_GET['id']) or $_GET['id'] == '') {
         header('Location: home.php');
     } else {
-        $PRO_id = mysqli_real_escape_string($link,$_GET['id']);
+        $PRO_id = pg_escape_string($link, $_GET['id']); // Utilisez pg_escape_string pour échapper les caractères spéciaux
         $sql = "SELECT * FROM produits WHERE PRO_id = $PRO_id";
-        $res = mysqli_query($link, $sql);
-        if (mysqli_num_rows($res)  == 0) {
+        $res = pg_query($link, $sql);
+        if (pg_num_rows($res) == 0) {
             header('Location: home.php');
         } else {
-            $produit = mysqli_fetch_assoc($res);
-            $prix = number_format($produit['PRO_prix'],2,',',' ');
+            $produit = pg_fetch_assoc($res);
+            $prix = number_format($produit['PRO_prix'], 2, ',', ' ');
         }
     }
-
-?><!DOCTYPE html>
+    ?>
+<!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">

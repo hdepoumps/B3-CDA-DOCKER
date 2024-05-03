@@ -8,6 +8,7 @@ END $$;
 -- Connexion à la base de données gestion_produits
 \c gestion_produits
 
+CREATE EXTENSION IF NOT EXISTS pgcrypto;
 -- Création de la table produits
 DROP TABLE IF EXISTS produits;
 CREATE TABLE produits (
@@ -65,4 +66,4 @@ CREATE TABLE utilisateurs (
                               UNIQUE (US_login)
 );
 
-INSERT INTO utilisateurs (US_login, US_password) VALUES ('admin', encode(SHA256('password'), 'hex'));
+INSERT INTO utilisateurs (US_login, US_password) VALUES ('admin', crypt('password', gen_salt('bf')));
