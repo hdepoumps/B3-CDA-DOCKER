@@ -1,10 +1,11 @@
 services:
   db:
     image: mysql:8.3
-    container_name: db
+    container_name: db3
     environment:
       MYSQL_DATABASE: gestion_produits
       MYSQL_ROOT_PASSWORD: root
+      MYSQL_CHARSET: utf8mb4
     volumes:
       - ./database/gestion_produits.sql:/docker-entrypoint-initdb.d/gestion_produits.sql
     networks:
@@ -14,8 +15,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    image: mon_application:v2
-    container_name: web
+    container_name: web3
     ports:
       - "8080:80"
     volumes:
@@ -29,4 +29,4 @@ services:
 
 networks:
   default:
-    name: my_network
+    name: my_network3
