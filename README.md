@@ -37,4 +37,11 @@ docker-compose up -d
 ```
 Maintenant que votre conteneur est en cours d'exécution, vous pouvez accéder à l'application en ouvrant un navigateur web et en naviguant vers `http://localhost:8080`.
 
-## 3 Version de dev : mise à jour de la plate-forme: mise à jour de la plate-forme
+## 3 Version de dev : mise à jour de la plate-forme
+1. Ouvrez un terminal et naviguez jusqu'au répertoire "etape3".
+2. Exécutez la commande suivante pour construire l'image Docker :
+```bash
+docker-compose up -d
+```
+Maintenant que votre conteneur est en cours d'exécution, vous pouvez accéder à l'application en ouvrant un navigateur web et en naviguant vers `http://localhost:8080`.
+

@@ -1,9 +1,9 @@
 <?php
-    $host = "db";
-    $username = "root";
-    $password = "root";
-    $db = "gestion_produits";
+$host = "db";
+$username = "postgres"; // Utilisateur par défaut de PostgreSQL
+$password = "root";
+$db = "gestion_produits";
 
-    $link = mysqli_connect($host,$username,$password,$db) or die ("Erreur de connexion à la base de données.");
-    mysqli_set_charset($link,"utf8");
+$link = pg_connect("host=$host dbname=$db user=$username password=$password") or die("Erreur de connexion à la base de données.");
+pg_set_client_encoding($link, "UTF8");
 ?>

@@ -1,5 +1,5 @@
 <?php
-    session_start();
+global$link; session_start();
     include 'connect.php';
     include 'fonctions.php';
     secu();
